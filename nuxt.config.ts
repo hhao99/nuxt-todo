@@ -6,11 +6,24 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
-  modules: [],
   vite: {
     plugins: [
       tailwindcss(),
     ],
   },
   css: ['~/assets/css/main.css'],
+
+  // pinia related config
+  modules: [
+    '@pinia/nuxt'
+  ],
+  imports: {
+    dirs: ['./stores']
+  },
+  pinia: {
+    autoImports: [
+      'defineStore',
+      'acceptHMRUpdate',
+    ]
+  }
 })

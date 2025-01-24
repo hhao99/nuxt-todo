@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 const  links = [
     { name: 'Home', path: '/' },
+    { name: 'Todo App Demo', path: '/todo'},
     { name: 'About', path: '/about' },
 ]
 </script>
