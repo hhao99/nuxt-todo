@@ -6,5 +6,5 @@ export interface Todo {
 
 export interface TodoAppState {
     list: Todo[]
-    filter: 'all'| 'todo' | 'done'
+    status: 'all'| 'todo' | 'done'
 }
