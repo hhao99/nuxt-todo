@@ -2,11 +2,10 @@
 import { ref } from 'vue'
 import { useTodoStore } from '~/stores/todo'
 const store = useTodoStore()
-    const task = ref('')
-    const addTodo = () => {
-        console.log('add todo')
-        store.add(task.value)
-    }
+const task = ref('')
+const addTodo = () => {
+        store.addTodo(task.value)
+}
 </script>
 <template>
     <div>

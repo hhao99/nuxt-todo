@@ -6,20 +6,34 @@ const initialTodo: Todo[] = [
     { id: uuidv4(), task: "start nuxt project", status: 'done' },
     { id: uuidv4(), task: "update tailwindcss support", status: 'done' },
 ]
-export const useTodoStore = defineStore('todoApp', {
-    state: (): TodoAppState => ({
-        list: [...initialTodo],
-        status: 'all',
-    }),
-    getters: {
-        filteredList(): Todo[] {
-            if (this.status === 'all') return this.list
-            return this.list.filter((todo) => todo.status === this.status)
+export const useTodoStore = defineStore('todoApp',()=> {
+    const state = reactive<TodoAppState>({
+        list: initialTodo,
+        status: 'all'
+    })
+    const addTodo = (task: string) => {
+        state.list.push({ id: uuidv4(), task, status: 'todo' })
+    }
+    const removeTodo = (id: string) => {
+        state.list = state.list.filter(todo => todo.id !== id)
+    }
+    const updateStatus = (id: string, status: 'todo' | 'done') => {
+        const todo = state.list.find(todo => todo.id === id)
+        if (todo) {
+            todo.status = status
         }
-    },
-    actions: {
-        add(task: string) {
-            this.list.push({ id: uuidv4(), task, status: 'todo' })
+    }
+    const filteredList = computed(() => {
+        if (state.status === 'all') {
+            return state.list
         }
+        return state.list.filter(todo => todo.status === state.status)
+    })
+    return {
+        state,
+        addTodo,
+        removeTodo,
+        updateStatus,
+        filteredList
     }
 })
