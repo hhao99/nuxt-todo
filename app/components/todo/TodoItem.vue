@@ -6,7 +6,6 @@
     const isEditing = ref(false)
     
     const handleUpdateTodo = (todo: Todo) => {
-        todo.status = todo.status ? 'done' : 'todo';
         store.updateTodo(todo)
         isEditing.value = false
     }
