@@ -1,7 +1,7 @@
 export interface Todo {
     id: string
     task: string
-    status: 'todo' | 'done'
+    status: boolean
 }
 
 export interface TodoAppState {

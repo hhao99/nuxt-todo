@@ -1,6 +1,16 @@
 {
-  "name": "nuxt-app",
-  "private": true,
+  "name": "nuxt-app-todo",
+  "version": "0.1.0",
+  "author": "Eric Hao",
+"license": "MIT",
+"repository": {
+    "type": "git",
+    "url": "https://github.com/hhao99/nuxt-app-todo.git"
+},
+"keywords": [
+    "nuxt",
+    "todo",
+    "app"],
   "type": "module",
   "scripts": {
     "build": "nuxt build",

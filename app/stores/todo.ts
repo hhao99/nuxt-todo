@@ -23,17 +23,21 @@ export const useTodoStore = defineStore('todoApp',()=> {
             todo.status = status
         }
     }
+    const updateTodo = (todo: Todo) => {
+        state.list[state.list.findIndex(t => t.id === todo.id)] = todo
+    }
     const filteredList = computed(() => {
         if (state.status === 'all') {
             return state.list
         }
-        return state.list.filter(todo => todo.status === state.status)
+        return state.list.filter(todo => state.status === 'todo' ? !todo.status : todo.status )
     })
     return {
         state,
         addTodo,
         removeTodo,
         updateStatus,
+        updateTodo,
         filteredList
     }
 })
